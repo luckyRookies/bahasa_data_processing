@@ -157,19 +157,19 @@ class MultiWOZParser:
 
                                 domain_action_sents[domain][intent].add(text)
 
-        output_dir = '../MULTIWOZ2.1'
+        output_dir = '../../MULTIWOZ2.1'
         fil_domain = {}
         for d in val_domain_list:
             if d in domain_action_sents:
                 # print(d, domain_action_sents[d].keys())
-                fil_domain[d] = list(domain_action_sents[d].keys())
+                fil_domain[d] = list(sorted(domain_action_sents[d].keys()))
                 # print(fil_domain[d].keys())
         # with open(os.path.join(output_dir, 'multiwoz_domain_intent_sents.json'), 'w', encoding='utf8') as fd:
         #     json.dump(fil_domain, fd)
         print(fil_domain)
 
         # bahasa intent
-        bahasa_dir = '../BahasaWOZ/MULTIWOZ_BAHASA/annotations/formatted_data/bahasa'
+        bahasa_dir = '../../BahasaWOZ/MULTIWOZ_BAHASA/annotations/formatted_data/bahasa'
         bahasa_domain_intent = {}
         for d in val_domain_list:
             intent_list = []
@@ -180,13 +180,13 @@ class MultiWOZParser:
                         intent_list.append(l)
             bahasa_domain_intent[d] = intent_list
         all_domain_intent = {'multiwoz': fil_domain, 'bahasawoz': bahasa_domain_intent}
-        with open(os.path.join(output_dir, 'en_ba_domain_intent.json'), 'w', encoding='utf8') as fd:
+        with open(os.path.join('./', 'en_ba_domain_intent.json'), 'w', encoding='utf8') as fd:
             json.dump(all_domain_intent, fd)
 
 
 
 if __name__ == '__main__':
-    parser = MultiWOZParser(directory='../MULTIWOZ2.1')
+    parser = MultiWOZParser(directory='../../MULTIWOZ2.1')
     parser.get_action_sentences()
 
 
