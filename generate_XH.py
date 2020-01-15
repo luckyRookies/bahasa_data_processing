@@ -7,6 +7,11 @@ logging.basicConfig(level=logging.DEBUG)#,format='%(asctime)s - %(name)s - %(lev
 logger = logging.getLogger(__name__)
 
 def generate_H(en_ba_nums):
+    '''
+
+    :param en_ba_nums: [[num_of_vertex_within_edge1, num_of_vertex_within_edge2, ...], [num_of_other_vertex_within_edge1, num_of_other_vertex_within_edge2, ...]]
+    :return: incidence matrix
+    '''
     col = en_ba_nums.shape[1]
     en_matrix = []
     ba_matrix = []
